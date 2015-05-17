@@ -1,5 +1,8 @@
 package com.colin.util;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
@@ -126,6 +129,32 @@ public class Validator {
 	 */
 	public static boolean isIPAddr(String ipAddr) {
 		return Pattern.matches(REGEX_IP_ADDR, ipAddr);
+	}
+	
+	/**
+	 * main函数:测试以上方法时候正确有效
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException
+	{
+		String str = "http://www.hao123.com";
+		if(isUrl(str))
+		{
+			System.out.println("是url!");
+			String result = HttpRequest.sendGet(str, "name=colin");
+			//System.out.println("result="+result);
+			File file = new File("page.html");
+			@SuppressWarnings("resource")
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(result.getBytes());
+			
+			
+		}
+		else{
+			System.out.println("不是url");
+		}
+		
 	}
 
 }

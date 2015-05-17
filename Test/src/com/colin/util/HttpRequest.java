@@ -19,7 +19,7 @@ public class HttpRequest {
 	 * 向指定的url发送get方法的请求
 	 * @param url
 	 * @param param
-	 * @return	
+	 * @return	返回除了表头数据的http数据主体
 	 */
 	public static String sendGet(String url,String param)
 	{
@@ -64,7 +64,13 @@ public class HttpRequest {
 		return result;
 	}	
 	
-	public static String sendPose(String url,String param)
+	/**
+	 * 向指定url发送post请求
+	 * @param url
+	 * @param param
+	 * @return	返回的数据
+	 */
+	public static String sendPost(String url,String param)
 	{
 		PrintWriter out = null;
 		BufferedReader in = null;
